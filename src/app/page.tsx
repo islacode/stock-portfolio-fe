@@ -1,5 +1,5 @@
 'use client';
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import { Line, LineChart, XAxis, YAxis } from "recharts";
 import data from './data.json';
 import {useEffect, useState} from "react";
 import {ChartData, Data, Range} from "@/app/types";
@@ -21,7 +21,7 @@ export default function Home() {
   );
   const [company, setCompany] = useState<string>('NVDA')
   const [chartData, setChartData] = useState<ChartData[]>([]);
-  const [range, setRange] = useState<Range>([0, 0]);
+  const [range, setRange] = useState<Range>({ min: 0, max: 0 });
 
   useEffect(() => {
     if (company) {
