@@ -8,9 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "coverage:clean": "rm -rf coverage",
-    "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --browser chrome --e2e\"",
-    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --browser chrome --e2e --env coverage=true\"",
-    "test:cypress": "start-server-and-test dev http://localhost:3000 cypress",
+    "e2e:start_server": "yarn build && start-server-and-test dev http://localhost:3000",
+    "e2e": "yarn e2e:start_server \"cypress open --browser chrome --e2e\"",
+    "e2e:headless": "yarn e2e:start_server \"cypress run --browser chrome --e2e --env coverage=true\"",
+    "cypress:test": "yarn cypress run --browser chrome --e2e --env coverage=true",
+    "test": "yarn cypress run --record --browser chrome --e2e --env coverage=true",
     "test:unit": "jest"
   },
   "dependencies": {
