@@ -1,5 +1,5 @@
 'use client';
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import { Line, LineChart, XAxis, YAxis } from "recharts";
 import data from './data.json';
 import {useEffect, useState} from "react";
 import {ChartData, Data, Range} from "@/app/types";
@@ -21,7 +21,7 @@ export default function Home() {
   );
   const [company, setCompany] = useState<string>('NVDA')
   const [chartData, setChartData] = useState<ChartData[]>([]);
-  const [range, setRange] = useState<Range>([0, 0]);
+  const [range, setRange] = useState<Range>({ min: 0, max: 0 });
 
   useEffect(() => {
     if (company) {
@@ -50,6 +50,7 @@ export default function Home() {
           className="w-full rounded-lg bg-white border border-gray-300 text-gray-900 text-sm font-medium px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-100"
           id="companySelect"
           onChange={(evt) => setCompany(evt.target.value)}
+          value={company}
         >
           {companies.map((company) => (
             <option key={company} value={company}>{company}</option>
