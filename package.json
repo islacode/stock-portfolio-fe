@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "coverage:clean": "rm -rf coverage",
+    "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --browser chrome --e2e\"",
+    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --browser chrome --e2e --env coverage=true\"",
+    "test:cypress": "start-server-and-test dev http://localhost:3000 cypress",
+    "test:unit": "jest"
   },
   "dependencies": {
     "next": "15.3.1",
@@ -24,10 +28,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^14.3.2",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "start-server-and-test": "^2.0.11",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "typescript": "^5"
